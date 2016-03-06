@@ -1,5 +1,7 @@
 var Hexo = require('hexo');
-hexo = new Hexo(process.cwd(), {});
+var cwd = process.cwd();
+console.log(cwd);
+hexo = new Hexo(cwd, {});
 hexo.init().then(() => {
-	hexo.call('server', {});
+	hexo.call('server', {port: 4484});
 });
