@@ -92,10 +92,19 @@ hexo.init((args) => hexo.call('server'));
 *   但linux下的就不这么幸运了：
 执行`forever app.js`后和本地的windows一样可以访问，`forever list`也能看到它，但ctrl + c就不能访问了，更别提关了SecureCRT。（我也不知道为什么）问客服，客服说可以这样：
 ``` bash
-hexo server &
+hexo server &		// nohup hexo server &也行
 ```
-不行（ctrl + c 关闭会话，仍可以访问。但是关闭SecureCRT就不可以访问了）。
-遂采用终极解决方案，改etc/rc.local，即：
+不行（ctrl + c 关闭会话，仍可以访问。但是关闭SecureCRT就不可以访问了，putty也一样）。
+<img src="/img/putty.gif" width = "400" alt="putty" align=center />
+
+排查了一下，应该用`ctrl + d`关闭SecureCRT（putty也一样），而不是`ctrl + c`。这样就ok啦~~~！！！
+另外，如果要stop这个进程，可以：
+``` bash
+ps -ef | grep hexo
+（找到进程号）kill 进程号
+```
+
+另一种后台持续运行的方法是改etc/rc.local，即：
 执行`vi /etc/rc.local`，在末尾加上：
 ``` bash
 cd /usr/code/blog
