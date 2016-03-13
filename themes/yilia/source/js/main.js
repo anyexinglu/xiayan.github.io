@@ -63,12 +63,13 @@ require([], function (){
 					var src = imgArr.eq(i).attr("src");
 					var title = imgArr.eq(i).attr("alt");
 					var html = imgArr[i].outerHTML;
-					imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'>" + html + "</a>");
+					if (imgArr.eq(i).attr('disableFancybox') !== 'true') {
+						imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'>" + html + "</a>");
+					}
 				}
 				$(".article-inner .fancy-ctn").fancybox();
 			}
 		});
-		
 	}
 	//是否开启动画
 	if(yiliaConfig.animate === true){
