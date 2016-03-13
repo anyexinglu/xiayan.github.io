@@ -1,4 +1,6 @@
 title: Q & A
+date: 2016-03-13 23:00:00
+tags: ['q&a']
 ---
 <a href="/2016/03/13/Q%20&%20A/"><img disableFancybox="true" src="/img/q&a.jpg"></a>
 
