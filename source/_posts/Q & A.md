@@ -11,6 +11,7 @@ tags: ['q&a']
 -  [1. 改完域名规则，等了TTL分钟未生效怎么办](#1-改完域名规则，等了TTL分钟未生效怎么办)
 -  [2. XXX license should be a valid SPDX license expression](#2-XXX-license-should-be-a-valid-SPDX-license-expression)
 -  [3. 使fancybox忽略某些图片](#3-使fancybox忽略某些图片)
+-  [4. 想要测试各种浏览器](#4-想要测试各种浏览器)
 -  待补充...
 ## 1. 改完域名规则，等了TTL分钟未生效怎么办
 配置改完后，我等了TTL分钟（如图为1分钟）后，
@@ -69,3 +70,10 @@ SPDX规范是指，注明开源软件包的许可及其内容组成，以规范u
 ``` bash
 <a href="/2016/03/13/Q%20&%20A/"><img disableFancybox="true" src="/img/q&a.jpg"></a>
 ```
+
+## 4. 想要测试各种浏览器
+[BrowserStack](https://www.browserstack.com) 提供一个平台让我们能在真实的浏览器中运行我们的项目。
+
+主要用于：windows下看mac里的浏览器，mac下看windows的ie，不过升级要付费。
+
+[testobject](http://testobject.com) 
