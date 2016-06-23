@@ -20,6 +20,10 @@ tags: ['碎片知识']
 -  [7. 如何运用js中的call及apply](#7-如何运用js中的call及apply)
 -  [8. 浏览器请求接口时的并发限制](#8-Max parallel http connections in a browser?)
 -  [9. 感受PostCSS插件Autoprefixer](#9-感受PostCSS插件Autoprefixer)
+-  [10. why npm scripts](#10-why-npm-scripts)
+-  [11. 前端JS调试技巧](#11-前端JS调试技巧)
+-  [12. 巧用按位非~运算符](#12-巧用按位非~运算符)
+-  [13. 彻底理解0.1 + 0.2 === 0.30000000000000004的背后](#13-彻底理解0.1 + 0.2 === 0.30000000000000004的背后)
 
 ## 1. 关于测试各种浏览器
 （1）[BrowserStack](https://www.browserstack.com) 提供一个平台让我们能在真实的浏览器中运行我们的项目。
@@ -149,3 +153,62 @@ gulp.task('default', ['watch', 'css']);
 ]
 ```
 重启sublime即可使用（憋说话，去感受）~
+
+## 10. why npm scripts
+之前接触到gulp等构建工具，后来看到这么一句话：（from [前端技术栈 - 2016年3月](http://zhuanlan.zhihu.com/p/20639855)）
+> 包管理：npm
+没什么好说的，基本没有竞争者。这里有一点要强调下：`请好好利用npm script`
+
+于是翻了一下，发现npm scripts越来越火的原因：http://www.cnblogs.com/zldream1106/p/5204599.html
+
+结合看项目：[npm-build-boilerplate](https://github.com/damonbauer/npm-build-boilerplate)
+
+
+## 11. 前端JS调试技巧
+[《一探前端开发中的JS调试技巧》](http://www.cnblogs.com/miragele/p/5394396.html)：
+- [DOM断点调试](http://www.cnblogs.com/miragele/p/5394396.html#DOM_u65AD_u70B9_u8C03_u8BD5)
+  * 当节点内部子节点变化时断点（Break on subtree modifications）
+  * 当节点属性发生变化时断点（Break on attributes modifications）
+  * 当节点被移除时断点（Break on node removal）
+- [XHR Breakpoints](http://www.cnblogs.com/miragele/p/5394396.html#XHR_Breakpoints)
+  我们可以通过“XHR Breakpoints”右侧的“+”号为异步断点添加断点条件，当异步请求触发时的URL满足此条件，JS逻辑则会自动产生断点。
+- [Event Listener Breakpoints](http://www.cnblogs.com/miragele/p/5394396.html#Event_Listener_Breakpoints)
+  事件监听器断点，即根据事件名称进行断点设置。当事件被触发时，断点到事件绑定的位置。事件监听器断点，列出了所有页面及脚本事件，包括：鼠标、键盘、动画、定时器、XHR等等。
+
+## 12. 巧用按位非~运算符
+惊奇在 [针针见血：怎么消除JavaScript中的代码坏味道](https://github.com/gaohailang/blog/issues/5)里发现一段代码：
+``` bash
+let startsWithVowel = word => !!~VOWELS.indexOf(word[0]);   // 判断word的第一个字母是否在元音集合里
+```
+
+
+查了一下“~”是什么意思，大约是：
+> ~是对位求反 1变0， 0变1。
+`~num` 简单的理解就是改变运算数的符号并减去1，当然，这是只是简单的理解能转换成number类型的数据。
+
+因此，判断 word 是否在 str 里面，以前是：
+``` bash
+let containsWord = word => str.indexOf(word) !== -1
+// 或
+let containsWord = word => str.indexOf(word) >= 0
+```
+
+现在可以：
+``` bash
+let containsWord = word => !!~str.indexOf(word)
+```
+另外，判断 str 是否以 prefix 开头，可以：
+``` bash
+let startsWith = prefix => !str.indexOf(prefix)
+// 等价于 str.indexOf(prefix) === 0
+// 等价于 str.slice(0, prefix.length) === prefix
+（有评测说slice的效率更高。这里不使用indexOf()的原因是，indexOf会扫描整个字符串，如果字符串很长，indexOf的效率就会很差。）
+```
+此外，ES6也支持了[startsWith](http://es6.ruanyifeng.com/?search=startsWith&x=4&y=6#docs/string#includes-startsWith-endsWith)，所以不妨直接用：`str.startsWith(word)`
+
+显得“高洋”很多~
+
+## 13. 彻底理解0.1 + 0.2 === 0.30000000000000004的背后
+参考：
+（1）[JS魔法堂：彻底理解0.1 + 0.2 === 0.30000000000000004的背后](https://segmentfault.com/a/1190000005022170)
+（2）[How numbers are encoded in JavaScript](http://www.2ality.com/2012/04/number-encoding.html)
