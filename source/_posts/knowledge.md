@@ -24,6 +24,7 @@ tags: ['碎片知识']
 -  [11. 前端JS调试技巧](#11-前端JS调试技巧)
 -  [12. 巧用按位非~运算符](#12-巧用按位非~运算符)
 -  [13. 彻底理解0.1 + 0.2 === 0.30000000000000004的背后](#13-彻底理解0.1 + 0.2 === 0.30000000000000004的背后)
+-  [14. 快速建站](#14-快速建站)
 
 ## 1. 关于测试各种浏览器
 （1）[BrowserStack](https://www.browserstack.com) 提供一个平台让我们能在真实的浏览器中运行我们的项目。
@@ -212,3 +213,11 @@ let startsWith = prefix => !str.indexOf(prefix)
 参考：
 （1）[JS魔法堂：彻底理解0.1 + 0.2 === 0.30000000000000004的背后](https://segmentfault.com/a/1190000005022170)
 （2）[How numbers are encoded in JavaScript](http://www.2ality.com/2012/04/number-encoding.html)
+
+## 14. 快速建站
+（1）[strikingly](https://www.strikingly.com)：2012 年创立的市面上最简易的建站平台 Strikingly
+Strikingly is tool that lets you build a website in less than 10 minutes.
+（2） [搜狐快站](http://zhan.sohu.com)
+搜狐快站被政府约谈，原因为：有用户利用快站的建站功能，建立网站后采取技术手段复制境外站点镜像，并建立包括法轮功在内的境外违法站点。
+
+
