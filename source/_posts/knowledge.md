@@ -219,5 +219,3 @@ let startsWith = prefix => !str.indexOf(prefix)
 Strikingly is tool that lets you build a website in less than 10 minutes.
 （2） [搜狐快站](http://zhan.sohu.com)
 搜狐快站被政府约谈，原因为：有用户利用快站的建站功能，建立网站后采取技术手段复制境外站点镜像，并建立包括法轮功在内的境外违法站点。
-
-
